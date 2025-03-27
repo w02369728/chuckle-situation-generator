@@ -13,70 +13,57 @@ export interface Excuse {
   reason: string;
 }
 
-// Preset components for generating excuses
-const INTROS = [
-  "I would absolutely love to, but",
-  "I'm terribly sorry, however",
-  "I wish I could, unfortunately",
-  "Under normal circumstances I would, except",
-  "That sounds amazing, sadly",
-  "Believe me, I tried, but",
-  "I was fully planning on it, until",
-  "My schedule was completely clear, then",
-  "I had every intention of being there, however",
-  "I'm devastated to miss it, because"
+// More elaborate and whimsical word collections
+const SOPHISTICATED_INTROS = [
+  "I'm absolutely devastated to inform you that",
+  "Fate has conspired in the most peculiar manner, rendering me utterly incapable of",
+  "The universe has whispered a rather elaborate narrative explaining why",
+  "In the grand tapestry of cosmic coincidences,",
+  "Allow me to paint you a picture of why",
+  "Prepare yourself for a tale of such magnificent improbability that",
+  "Through a series of events so absurd they defy rational explanation,",
+  "You might find this hard to believe, but",
+  "Picture, if you will, a scenario where",
+  "In the most delightful twist of serendipity,"
 ];
 
-const MIDDLES = [
-  "my pet goldfish",
-  "a mysterious cosmic event",
-  "my imaginary friend",
-  "my collection of vintage spoons",
-  "the ghost who lives in my basement",
-  "my temporary superhero duties",
-  "my secret identity",
-  "my emotional support cactus",
-  "my neighbor's conspiracy theories",
-  "the alignment of the stars"
+const ECCENTRIC_MIDDLES = [
+  "my time-traveling goldfish",
+  "an impromptu interdimensional conference",
+  "a rogue collection of sentient houseplants",
+  "my grandmother's prophetic sock puppet",
+  "an emergency meeting with my existential committee",
+  "a diplomatic incident involving quantum mechanics",
+  "a spontaneous interpretive dance revolution",
+  "my spirit animal's midlife crisis",
+  "an urgent cryptozoological investigation",
+  "a philosophical debate with my lunch"
 ];
 
-const ENDINGS = [
-  "requires my immediate attention",
-  "has developed separation anxiety",
-  "is going through an existential crisis",
-  "has scheduled an impromptu intervention",
-  "needs emotional support during this difficult time",
-  "has demanded my presence for moral support",
-  "won't stop sending me urgent messages",
-  "has taken my calendar hostage",
-  "is questioning the meaning of life",
-  "has mysteriously rearranged my priorities"
+const DRAMATIC_ENDINGS = [
+  "has demanded my undivided attention with theatrical urgency",
+  "requires immediate metaphysical intervention",
+  "has launched a full-scale existential rebellion",
+  "is conducting a surprise performance review of my life choices",
+  "needs emergency metaphorical resuscitation",
+  "has initiated a complex negotiation process",
+  "is experiencing an unprecedented moment of cosmic significance",
+  "has declared a state of absolute administrative chaos",
+  "demands a level of commitment that defies ordinary scheduling",
+  "has orchestrated a scenario of sublime improbability"
 ];
 
-const CONNECTIONS = [
-  "and unfortunately",
-  "which means",
-  "consequently,",
-  "so naturally,",
-  "leaving me no choice but to",
-  "therefore I must",
-  "and as a result, I need to",
-  "so I'm obligated to",
-  "which has forced me to",
-  "and now I have to"
-];
-
-const OBLIGATIONS = [
-  "contemplate the universe's mysteries",
-  "alphabetize my spice cabinet",
-  "practice my yodeling techniques",
-  "attend an emergency sock drawer reorganization",
-  "polish my collection of commemorative spoons",
-  "meditate on the meaning of semicolons",
-  "master the art of speaking backwards",
-  "prepare for the potential zombie apocalypse",
-  "participate in an underwater basket weaving competition",
-  "monitor the migration patterns of my houseplants"
+const WITTY_CONNECTIONS = [
+  "which has precipitated a cascade of logistical complexity",
+  "creating a labyrinth of scheduling gymnastics",
+  "transforming my calendar into a abstract art installation",
+  "rendering my previous commitments temporarily irrelevant",
+  "causing a temporary suspension of my usual spatial-temporal coordinates",
+  "introducing an element of delightful unpredictability",
+  "crafting a narrative so bizarre it borders on performance art",
+  "generating a quantum entanglement of prior arrangements",
+  "invoking Murphy's Law with unprecedented creativity",
+  "composing a symphony of logistical improvisation"
 ];
 
 export function useExcuseGenerator() {
@@ -86,20 +73,15 @@ export function useExcuseGenerator() {
   });
 
   const generateExcuse = useCallback(({ situation, reason }: ExcuseInput): Excuse => {
-    // Select random elements from each array
-    const intro = INTROS[Math.floor(Math.random() * INTROS.length)];
-    const middle = MIDDLES[Math.floor(Math.random() * MIDDLES.length)];
-    const ending = ENDINGS[Math.floor(Math.random() * ENDINGS.length)];
-    const connection = CONNECTIONS[Math.floor(Math.random() * CONNECTIONS.length)];
-    const obligation = OBLIGATIONS[Math.floor(Math.random() * OBLIGATIONS.length)];
+    const intro = SOPHISTICATED_INTROS[Math.floor(Math.random() * SOPHISTICATED_INTROS.length)];
+    const middle = ECCENTRIC_MIDDLES[Math.floor(Math.random() * ECCENTRIC_MIDDLES.length)];
+    const ending = DRAMATIC_ENDINGS[Math.floor(Math.random() * DRAMATIC_ENDINGS.length)];
+    const connection = WITTY_CONNECTIONS[Math.floor(Math.random() * WITTY_CONNECTIONS.length)];
     
-    // Personalize with user input if provided
-    let excuseText = `${intro} ${middle} ${ending}`;
+    let excuseText = `${intro} ${middle} ${ending}.`;
     
-    if (situation && reason) {
-      excuseText += ` ${connection} ${obligation} instead of ${situation.toLowerCase()}, all because of ${reason.toLowerCase()}.`;
-    } else {
-      excuseText += ".";
+    if (situation) {
+      excuseText += ` ${connection} that makes ${situation.toLowerCase()} temporarily impossible.`;
     }
     
     return {
