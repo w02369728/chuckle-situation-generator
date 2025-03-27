@@ -1,12 +1,14 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import ExcuseGenerator from "@/components/ExcuseGenerator";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/30 pb-20">
+      <ExcuseGenerator />
+      
+      <footer className="mt-20 text-center text-sm text-muted-foreground">
+        <p>The art of the polite excuse &middot; <span className="accent-underline">Made with creativity</span></p>
+      </footer>
     </div>
   );
 };
